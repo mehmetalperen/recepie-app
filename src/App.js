@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
+import DetailPage from "./pages/DetailPage"
+import FavoritePage from './pages/FavoritePage'
+import SearchPage from './pages/SearchPage'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Navbar from './components/Navbar';
 import './App.css';
 
+
+/*
+Main Colors:
+yellow --> ffd31d
+red --> ec0101
+
+secondary colors:
+yellow --> f6cd61
+red --> cd0a0a
+
+*/
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={SearchPage}/>
+          <Route path="/DetailPage/:id" component={DetailPage}/>
+          <Route path="/FavoritePage" component={FavoritePage}/>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
