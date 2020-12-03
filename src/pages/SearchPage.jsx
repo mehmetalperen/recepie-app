@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
-
+import PreviewCard from "../components/PreviewCard";
 import "./SearchPage.css";
 
 function SearchPage() {
+  const [typedValue, setTypedValue] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const [showResult, setShowREsult] = useState(false);
+
+  const handleTyping = (event) => {
+    setTypedValue(event.target.value);
+  };
+
+  useEffect(() => {
+    fetchSearch();
+  }, [typedValue]);
+
+  useEffect(() => {
+    if (searchResult.length > 0) {
+      setShowREsult(true);
+    }
+  }, [searchResult]);
+
+  async function fetchSearch() {
+    const data = await fetch(
+      `https://api.spoonacular.com/recipes/autocomplete?number=1&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
+    );
+    const items = await data.json();
+    setSearchResult(items);
+  }
   return (
     <div className="SearchPage">
       <div className="search-box-container">
@@ -26,6 +51,8 @@ function SearchPage() {
           <InputBase
             placeholder="Delicious Recepies..."
             style={{ color: "#ec0101", width: "fit-content" }}
+            value={typedValue}
+            onChange={handleTyping}
           />
           <IconButton
             type="submit"
@@ -40,21 +67,13 @@ function SearchPage() {
         </Paper>
       </div>
       <div className="search-result-wrapper">
-        <div>
-          <h1>result</h1>
-        </div>
-        <div>
-          <h1>result</h1>
-        </div>
-        <div>
-          <h1>result</h1>
-        </div>
-        <div>
-          <h1>result</h1>
-        </div>
-        <div>
-          <h1>result</h1>
-        </div>
+        {showResult
+          ? searchResult.map((dish) => {
+              return (
+                <PreviewCard key={dish.id} id={dish.id} name={dish.title} />
+              );
+            })
+          : null}
       </div>
     </div>
   );
