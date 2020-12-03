@@ -19,7 +19,7 @@
 
 .PreviewCard:hover {
   cursor: pointer;
-  background-color: #f6cd61;
+  background-color: #fff8cd;
   color: #cd0a0a;
   font-weight: bold;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);

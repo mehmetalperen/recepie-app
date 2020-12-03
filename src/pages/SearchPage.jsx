@@ -9,6 +9,7 @@ import "./SearchPage.css";
 function SearchPage() {
   const [typedValue, setTypedValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [showResult, setShowREsult] = useState(false);
 
   const handleTyping = (event) => {
     setTypedValue(event.target.value);
@@ -16,12 +17,17 @@ function SearchPage() {
 
   useEffect(() => {
     fetchSearch();
-    console.log(searchResult);
   }, [typedValue]);
+
+  useEffect(() => {
+    if (searchResult.length > 0) {
+      setShowREsult(true);
+    }
+  }, [searchResult]);
 
   async function fetchSearch() {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/autocomplete?number=25&query=${typedValue}&apiKey=a72d12c6d9b64afa8895a513be1ad664`
+      `https://api.spoonacular.com/recipes/autocomplete?number=1&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
     );
     const items = await data.json();
     setSearchResult(items);
@@ -61,9 +67,13 @@ function SearchPage() {
         </Paper>
       </div>
       <div className="search-result-wrapper">
-        {searchResult.map((dish) => {
-          return <PreviewCard key={dish.id} id={dish.id} name={dish.title} />;
-        })}
+        {showResult
+          ? searchResult.map((dish) => {
+              return (
+                <PreviewCard key={dish.id} id={dish.id} name={dish.title} />
+              );
+            })
+          : null}
       </div>
     </div>
   );
