@@ -1,3 +1,21 @@
 .SearchPage {
-  background-color: orange;
+  margin-top: 200px;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.search-box-container {
+  justify-content: center;
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.search-result-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
