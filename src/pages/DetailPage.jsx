@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./DetailPage.css";
 import IngredientCard from "../components/IngredientCard";
 import EquipmentCard from "../components/EquipmentCard";
