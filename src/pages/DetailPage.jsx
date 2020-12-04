@@ -12,8 +12,10 @@ function DetailPage() {
           src={`https://spoonacular.com/recipeImages/${209128}-240x150.jpg`}
           alt="dish-pic"
         />
-        <IngredientCard />
-        <EquipmentCard />
+        <div className="required-items-container">
+          <IngredientCard />
+          <EquipmentCard />
+        </div>
       </div>
 
       <div className="instructions-wrapper">

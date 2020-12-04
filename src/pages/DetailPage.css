@@ -1,10 +1,11 @@
 .DetailPage {
-  height: 100vh;
+  height: fit-content;
   /* ^^^ fit-content*/
-  margin-top: 150px; /* give space from top for the navbar height: 150px; */
+  margin-top: 200px; /* give space from top for the navbar height: 150px; */
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 2fr 0.5fr;
+  grid-gap: 20px;
   grid-template-areas:
     "info similarRecepie"
     "instructions similarRecepie";
@@ -12,13 +13,17 @@
 
 .recepie-info-wrapper {
   grid-area: info;
-  border-style: dashed; /*delete*/
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
+.required-items-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  flex-wrap: wrap;
+}
 .recepie-info-wrapper img {
-  border-style: solid;
   border-color: #cd0a0a;
   border-width: 1px;
   border-radius: 50%;
@@ -30,10 +35,10 @@
 }
 .instructions-wrapper {
   grid-area: instructions;
-  border-style: solid; /*delete*/
+  border-style: solid;
 }
 
 .similar-recepie-wrapper {
   grid-area: similarRecepie;
-  border-style: dotted; /*delete*/
+  border-style: dashed;
 }

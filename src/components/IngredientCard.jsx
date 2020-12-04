@@ -8,8 +8,7 @@ function IngredientCard() {
     <div className="IngredientCard">
       <IngredientItem />
       <IngredientItem />
-      {/* if there are more than 5 ingredient, then display the first 5, and hide the rest.
-only show the rest, if the user clicks on "show more" */}
+      {/*make it scrollable if there is more than five ingredienst*/}
       <IngredientItem />
       <IngredientItem />
       <IngredientItem />
