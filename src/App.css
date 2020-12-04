@@ -5,4 +5,6 @@
   right: 0;
   left: 0;
   height: fit-content;
+  background-color: #f6f4e6;
+  min-height: 100vh;
 }

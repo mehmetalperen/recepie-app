@@ -25,6 +25,7 @@ function PreviewCard(props) {
     );
     const itemSumJSON = await data.json();
     setRecepieSummary(itemSumJSON.summary);
+    //i don't like the format of summary. there are html elements displaying in the UI. need to fix it
   }
 
   return (
