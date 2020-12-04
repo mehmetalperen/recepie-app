@@ -1,29 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DetailPage.css";
 import IngredientCard from "../components/IngredientCard";
 import EquipmentCard from "../components/EquipmentCard";
 import SimilarRecepieCard from "../components/SimilarRecepieCard";
 import InstructionCard from "../components/InstructionCard";
-function DetailPage() {
+function DetailPage({ match }) {
+  //match.params.id
   return (
     <div className="DetailPage">
       <div className="recepie-info-wrapper">
         <img
-          src={`https://spoonacular.com/recipeImages/${209128}-240x150.jpg`}
+          src={`https://spoonacular.com/recipeImages/${match.params.id}-240x150.jpg`}
           alt="dish-pic"
         />
         <div className="required-items-container">
-          <IngredientCard />
-          <EquipmentCard />
+          <IngredientCard id={match.params.id} />
+          <EquipmentCard id={match.params.id} />
         </div>
       </div>
 
       <div className="instructions-wrapper">
-        <InstructionCard />
+        <InstructionCard id={match.params.id} />
       </div>
 
       <div className="similar-recepie-wrapper">
-        <SimilarRecepieCard />
+        <SimilarRecepieCard id={match.params.id} />
       </div>
     </div>
   );
