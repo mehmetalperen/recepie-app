@@ -1,3 +1,39 @@
 .DetailPage {
-  background-color: rebeccapurple;
+  height: 100vh;
+  /* ^^^ fit-content*/
+  margin-top: 150px; /* give space from top for the navbar height: 150px; */
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 2fr 0.5fr;
+  grid-template-areas:
+    "info similarRecepie"
+    "instructions similarRecepie";
+}
+
+.recepie-info-wrapper {
+  grid-area: info;
+  border-style: dashed; /*delete*/
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.recepie-info-wrapper img {
+  border-style: solid;
+  border-color: #cd0a0a;
+  border-width: 1px;
+  border-radius: 50%;
+  height: fit-content;
+  width: fit-content;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+}
+.instructions-wrapper {
+  grid-area: instructions;
+  border-style: solid; /*delete*/
+}
+
+.similar-recepie-wrapper {
+  grid-area: similarRecepie;
+  border-style: dotted; /*delete*/
 }
