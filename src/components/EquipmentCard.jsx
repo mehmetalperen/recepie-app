@@ -22,17 +22,17 @@ function EquipmentCard(props) {
   return (
     <div className="EquipmentCard">
       <div className="hide-btn-container">
-        <IconButton
+        <h4
           style={{ color: "#cd0a0a" }}
           onClick={() => {
             setIsHide(!isHide);
           }}
         >
-          hide
-        </IconButton>
+          {isHide ? "Equipments" : "Hide"}
+        </h4>
       </div>
 
-      {isHide
+      {!isHide
         ? equipmentList.map((equipment, index) => {
             return (
               <EquipmentItem

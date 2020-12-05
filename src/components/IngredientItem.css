@@ -1,6 +1,6 @@
 .IngredientItem {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin: 10px;
   padding: 10px;
   align-items: center;

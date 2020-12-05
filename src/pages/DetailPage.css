@@ -35,7 +35,6 @@
 }
 .instructions-wrapper {
   grid-area: instructions;
-  border-style: solid;
   margin: 0 auto;
 }
 

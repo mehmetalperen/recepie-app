@@ -43,7 +43,7 @@ function IngredientItem(props) {
           isClosed ? setBlur("blur(8px)") : setBlur("blur(0px)");
         }}
       >
-        X
+        {blur === "blur(0px)" ? "✅" : "❌"}
       </IconButton>
     </div>
   );

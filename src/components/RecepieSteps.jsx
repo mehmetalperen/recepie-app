@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RecepieSteps.css";
-//import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 
-function RecepieSteps() {
-  //props --> steps, and stepNumber
+function RecepieSteps(props) {
+  const [isDone, setIsDone] = useState(false);
+  const [paragraphStyle, setParagraphStyle] = useState({
+    textDecoration: "none",
+  });
   return (
     <div className="RecepieSteps">
-      <h3 className="step-number">{`${44})`}</h3>
-      <p className="instruction">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum cum
-        quae nihil earum maiores! Beatae impedit voluptas, obcaecati aspernatur
-        minima, magnam odio, ratione fugiat pariatur aliquid est. Suscipit,
-        ratione eos.
+      <h3 className="step-number">{`${props.stepNumber})`}</h3>
+      <p className="instruction" style={paragraphStyle}>
+        {props.stepOrder}
       </p>
-      <button>X</button>
+      <IconButton
+        style={{ color: "#cd0a0a" }}
+        onClick={() => {
+          setIsDone(!isDone);
+          isDone
+            ? setParagraphStyle({
+                textDecoration: "line-through",
+              })
+            : setParagraphStyle({
+                textDecoration: "none",
+              });
+        }}
+      >
+        {paragraphStyle.textDecoration === "line-through" ? "❌" : "✅"}
+      </IconButton>
     </div>
   );
 }
