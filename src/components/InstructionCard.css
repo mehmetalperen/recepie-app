@@ -14,7 +14,7 @@
   text-align: center;
 
   align-items: center;
-  max-height: 500px;
+  max-height: 50vh;
   overflow-x: hidden;
   overflow-y: auto;
 }

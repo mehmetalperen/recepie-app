@@ -30,6 +30,12 @@ function PreviewCard(props) {
 
   return (
     <div className="PreviewCard">
+      {props.isSearchPage ? null : (
+        <div style={{ textAlign: "right" }}>
+          <i>remove</i>
+        </div>
+      )}
+
       <div className="img-container">
         <img
           src={`https://spoonacular.com/recipeImages/${props.id}-312x231.jpg`}
