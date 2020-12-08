@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./PreviewCard.css";
 import { Link } from "react-router-dom";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import IconButton from "@material-ui/core/IconButton";
 
 /*
 Main Colors:
@@ -32,7 +35,13 @@ function PreviewCard(props) {
     <div className="PreviewCard">
       {props.isSearchPage ? null : (
         <div style={{ textAlign: "right" }}>
-          <i>remove</i>
+          <i
+            onClick={() => {
+              props.onRemove(props.id);
+            }}
+          >
+            remove
+          </i>
         </div>
       )}
 
@@ -58,7 +67,9 @@ function PreviewCard(props) {
         </Link>
       </div>
       <div className="like-unlike-btn-container">
-        <button>like</button>
+        <IconButton style={{ color: "#ec0101" }}>
+          <ThumbUpAltIcon />
+        </IconButton>
       </div>
     </div>
   );

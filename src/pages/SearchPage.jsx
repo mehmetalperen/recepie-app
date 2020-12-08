@@ -32,6 +32,10 @@ function SearchPage() {
     const items = await data.json();
     setSearchResult(items);
   }
+
+  const noFunctionalityFunction = (id) => {
+    console.log(`no functionality ${id}`);
+  };
   return (
     <div className="SearchPage">
       <div className="search-box-container">
@@ -75,6 +79,7 @@ function SearchPage() {
                   id={dish.id}
                   name={dish.title}
                   isSearchPage={true}
+                  onRemove={noFunctionalityFunction}
                 />
               );
             })

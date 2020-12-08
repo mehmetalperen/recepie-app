@@ -14,6 +14,8 @@ function IngredientCard(props) {
   useEffect(() => {
     if (ingredientList.length > 0) {
       setIsShowList(true);
+    } else {
+      setIsShowList(false);
     }
   }, [ingredientList]);
 

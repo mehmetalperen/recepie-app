@@ -18,6 +18,13 @@ function SimilarRecepieCard(props) {
     setSimilarRecepieList(JSONdata);
   }
 
+  const handleRemoveRecepie = (id) => {
+    setSimilarRecepieList((allRecepies) => {
+      return allRecepies.filter((recepieInfo) => {
+        return recepieInfo.id !== id;
+      });
+    });
+  };
   return (
     <div className="SimilarRecepieCard">
       {similarRecepieList.map((recepiInfo) => {
@@ -27,6 +34,7 @@ function SimilarRecepieCard(props) {
             id={recepiInfo.id}
             name={recepiInfo.title}
             isSearchPage={false}
+            onRemove={handleRemoveRecepie}
           />
         );
       })}

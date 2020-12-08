@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RecepieSteps.css";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -7,6 +7,16 @@ function RecepieSteps(props) {
   const [paragraphStyle, setParagraphStyle] = useState({
     textDecoration: "none",
   });
+
+  useEffect(() => {
+    isDone
+      ? setParagraphStyle({
+          textDecoration: "line-through",
+        })
+      : setParagraphStyle({
+          textDecoration: "none",
+        });
+  }, [isDone]);
   return (
     <div className="RecepieSteps">
       <h3 className="step-number">{`${props.stepNumber})`}</h3>
@@ -17,16 +27,9 @@ function RecepieSteps(props) {
         style={{ color: "#cd0a0a" }}
         onClick={() => {
           setIsDone(!isDone);
-          isDone
-            ? setParagraphStyle({
-                textDecoration: "line-through",
-              })
-            : setParagraphStyle({
-                textDecoration: "none",
-              });
         }}
       >
-        {paragraphStyle.textDecoration === "line-through" ? "❌" : "✅"}
+        {isDone ? "❌" : "✅"}
       </IconButton>
     </div>
   );

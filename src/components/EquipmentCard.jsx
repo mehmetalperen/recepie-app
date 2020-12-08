@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./EquipmentCard.css";
 import EquipmentItem from "./EquipmentItem";
-import IconButton from "@material-ui/core/IconButton";
 
 function EquipmentCard(props) {
   const [equipmentList, setEquipmentList] = useState([]);

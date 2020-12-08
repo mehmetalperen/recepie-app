@@ -15,6 +15,10 @@ function IngredientItem(props) {
   const [isClosed, setIsClosed] = useState(false);
   const [blur, setBlur] = useState("blur(0px)");
 
+  useEffect(() => {
+    isClosed ? setBlur("blur(8px)") : setBlur("blur(0px)");
+  }, [isClosed]);
+
   return (
     <div className="IngredientItem" style={{ filter: blur }}>
       {props.imgURL !== "no.jpg" ? (
@@ -40,10 +44,9 @@ function IngredientItem(props) {
         style={{ color: "#cd0a0a" }}
         onClick={() => {
           setIsClosed(!isClosed);
-          isClosed ? setBlur("blur(8px)") : setBlur("blur(0px)");
         }}
       >
-        {blur === "blur(0px)" ? "✅" : "❌"}
+        {isClosed ? "❌" : "✅"}
       </IconButton>
     </div>
   );
