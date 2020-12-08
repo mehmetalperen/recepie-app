@@ -7,14 +7,16 @@ function InstructionCard(props) {
   const [recepieStepsList, setRecepieStepsList] = useState([]);
   useEffect(() => {
     fetchSummaryData();
-  }, []);
+  }, [props.id]);
 
   async function fetchSummaryData() {
     const data = await fetch(
       `https://api.spoonacular.com/recipes/${props.id}/analyzedInstructions?apiKey=a32be79753f4445d842d92a452b17e81`
     );
     const stepsJSON = await data.json();
-    setRecepieStepsList(stepsJSON[0].steps);
+    if (stepsJSON.length > 0) {
+      setRecepieStepsList(stepsJSON[0].steps);
+    }
   }
 
   return (

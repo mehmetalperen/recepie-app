@@ -8,7 +8,7 @@ function EquipmentCard(props) {
   const [isHide, setIsHide] = useState(true);
   useEffect(() => {
     fetchEquipmentData();
-  }, []);
+  }, [props.id]);
 
   async function fetchEquipmentData() {
     const data = await fetch(

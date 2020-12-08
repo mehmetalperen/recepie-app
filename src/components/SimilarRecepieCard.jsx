@@ -8,7 +8,7 @@ function SimilarRecepieCard(props) {
 
   useEffect(() => {
     getSimilarRecepies();
-  }, []);
+  }, [props.id]);
 
   async function getSimilarRecepies() {
     const data = await fetch(

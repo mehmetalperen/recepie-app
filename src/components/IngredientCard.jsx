@@ -9,7 +9,7 @@ function IngredientCard(props) {
 
   useEffect(() => {
     getIngredientListData();
-  }, []);
+  }, [props.id]);
 
   useEffect(() => {
     if (ingredientList.length > 0) {
