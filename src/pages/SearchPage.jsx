@@ -10,6 +10,33 @@ function SearchPage() {
   const [typedValue, setTypedValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowREsult] = useState(false);
+  const [likedRecepies, setLikedRecepies] = useState([]);
+
+  useEffect(() => {
+    const likedRecepiesString = localStorage.getItem("likedRecepies");
+    if (likedRecepiesString) {
+      const likedRecepies = JSON.parse(likedRecepiesString);
+      setLikedRecepies(likedRecepies);
+    } else {
+      localStorage.setItem("likedRecepies", "[]");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("likedRecepies", JSON.stringify(likedRecepies));
+  }, [likedRecepies]);
+
+  const handleLikeRecepies = (id) => {
+    setLikedRecepies((previousLikedRecepies) => {
+      return [...previousLikedRecepies, id];
+    });
+  };
+
+  const handleUnlikeRecepies = (id) => {
+    setLikedRecepies((previousLikedRecepies) => {
+      return previousLikedRecepies.filter((recepieID) => recepieID !== id);
+    });
+  };
 
   const handleTyping = (event) => {
     setTypedValue(event.target.value);
@@ -80,6 +107,9 @@ function SearchPage() {
                   name={dish.title}
                   isSearchPage={true}
                   onRemove={noFunctionalityFunction}
+                  isLiked={likedRecepies.includes(dish.id)}
+                  onLike={handleLikeRecepies}
+                  onUnlike={handleUnlikeRecepies}
                 />
               );
             })
