@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./PreviewCard.css";
 import { Link } from "react-router-dom";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import IconButton from "@material-ui/core/IconButton";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 /*
@@ -47,10 +47,12 @@ function PreviewCard(props) {
       )}
 
       <div className="img-container">
-        <img
-          src={`https://spoonacular.com/recipeImages/${props.id}-312x231.jpg`}
-          alt="recepie-img"
-        />
+        <Link to={`/DetailPage/${props.id}`} style={{ textDecoration: "none" }}>
+          <img
+            src={`https://spoonacular.com/recipeImages/${props.id}-312x231.jpg`}
+            alt="recepie-img"
+          />
+        </Link>
       </div>
 
       <div className="recepie-detail-container">
@@ -64,7 +66,11 @@ function PreviewCard(props) {
           to={`/DetailPage/${props.id}`}
           style={{ textDecoration: "none", color: "#ec0101" }}
         >
-          <p className="recepie-description">{recepieSummary}</p>
+          {recepieSummary === "" ? null : (
+            <div
+              dangerouslySetInnerHTML={{ __html: `<p>${recepieSummary}</p>` }}
+            />
+          )}
         </Link>
       </div>
       <div className="like-unlike-btn-container">
@@ -78,7 +84,7 @@ function PreviewCard(props) {
             }
           }}
         >
-          {props.isLiked ? <ThumbDownIcon /> : <ThumbUpAltIcon />}
+          {props.isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
       </div>
     </div>

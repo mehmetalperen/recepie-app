@@ -1,3 +1,20 @@
 .FavoritePage {
-  background-color: #ffd31d;
+  margin-top: 200px;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+.liked-recepie-container {
+  height: fit-content;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 70%;
+  margin: 0 10%;
 }

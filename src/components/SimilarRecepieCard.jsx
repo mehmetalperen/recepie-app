@@ -5,7 +5,36 @@ import PreviewCard from "./PreviewCard";
 
 function SimilarRecepieCard(props) {
   const [similarRecepieList, setSimilarRecepieList] = useState([]);
+  const [likedRecepies, setLikedRecepies] = useState([]);
 
+  useEffect(() => {
+    const likedRecepiesString = localStorage.getItem("likedRecepies");
+    if (likedRecepiesString) {
+      const likedRecepies = JSON.parse(likedRecepiesString);
+      setLikedRecepies(likedRecepies);
+    } else {
+      localStorage.setItem("likedRecepies", "[]");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("likedRecepies", JSON.stringify(likedRecepies));
+  }, [likedRecepies]);
+  const handleLikeRecepies = (id) => {
+    setLikedRecepies((previousLikedRecepies) => {
+      return [...previousLikedRecepies, id];
+    });
+  };
+
+  const handleUnlikeRecepies = (id) => {
+    setLikedRecepies((previousLikedRecepies) => {
+      return previousLikedRecepies.filter((recepieID) => recepieID !== id);
+    });
+  };
+
+  const noFunctionalityFunction = (id) => {
+    console.log(`hevle gube function: ${id}`);
+  };
   useEffect(() => {
     getSimilarRecepies();
   }, [props.id]);
@@ -27,6 +56,7 @@ function SimilarRecepieCard(props) {
   };
   return (
     <div className="SimilarRecepieCard">
+      <h2 className="similar-recepi-title">Recepies you might like</h2>
       {similarRecepieList.map((recepiInfo) => {
         return (
           <PreviewCard
@@ -35,6 +65,9 @@ function SimilarRecepieCard(props) {
             name={recepiInfo.title}
             isSearchPage={false}
             onRemove={handleRemoveRecepie}
+            isLiked={likedRecepies.includes(recepiInfo.id)}
+            onLike={handleLikeRecepies}
+            onUnlike={handleUnlikeRecepies}
           />
         );
       })}

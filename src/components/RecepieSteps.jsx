@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./RecepieSteps.css";
 import IconButton from "@material-ui/core/IconButton";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
 function RecepieSteps(props) {
   const [isDone, setIsDone] = useState(false);
@@ -29,7 +31,11 @@ function RecepieSteps(props) {
           setIsDone(!isDone);
         }}
       >
-        {isDone ? "❌" : "✅"}
+        {isDone ? (
+          <CheckCircleOutlineIcon style={{ color: "green" }} />
+        ) : (
+          <RadioButtonUncheckedIcon style={{ color: "#cd0a0a" }} />
+        )}
       </IconButton>
     </div>
   );

@@ -54,7 +54,7 @@ function SearchPage() {
 
   async function fetchSearch() {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/autocomplete?number=1&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
+      `https://api.spoonacular.com/recipes/autocomplete?number=25&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
     );
     const items = await data.json();
     setSearchResult(items);
