@@ -4,6 +4,7 @@ import IngredientCard from "../components/IngredientCard";
 import EquipmentCard from "../components/EquipmentCard";
 import SimilarRecepieCard from "../components/SimilarRecepieCard";
 import InstructionCard from "../components/InstructionCard";
+
 function DetailPage({ match }) {
   //match.params.id
   return (

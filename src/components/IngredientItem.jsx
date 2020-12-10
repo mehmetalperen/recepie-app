@@ -9,8 +9,14 @@ function IngredientItem(props) {
   const [isMetric, setIsMetric] = useState(true);
 
   useEffect(() => {
-    setMetricAmount(props.metricAmount);
-    setUSamount(props.USamount);
+    setMetricAmount({
+      unit: props.metricAmount.unit,
+      value: props.metricAmount.value.toFixed(1),
+    });
+    setUSamount({
+      unit: props.USamount.unit,
+      value: props.USamount.value.toFixed(1),
+    });
   }, []);
 
   const [isClosed, setIsClosed] = useState(false);

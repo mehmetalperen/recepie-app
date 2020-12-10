@@ -8,10 +8,12 @@ import "./SearchPage.css";
 
 function SearchPage() {
   const [typedValue, setTypedValue] = useState("");
+  const [submitSearch, setSubmitSearch] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowREsult] = useState(false);
   const [likedRecepies, setLikedRecepies] = useState([]);
 
+  //LOCAL STROGE --> like unlike recepie
   useEffect(() => {
     const likedRecepiesString = localStorage.getItem("likedRecepies");
     if (likedRecepiesString) {
@@ -37,14 +39,20 @@ function SearchPage() {
       return previousLikedRecepies.filter((recepieID) => recepieID !== id);
     });
   };
+  //LOCAL STROGE --> like unlike recepie
 
+  //user typing
   const handleTyping = (event) => {
     setTypedValue(event.target.value);
   };
+  //user typing
 
+  //submit search and fecth the data
   useEffect(() => {
-    fetchSearch();
-  }, [typedValue]);
+    if (submitSearch) {
+      fetchSearch();
+    }
+  }, [submitSearch]);
 
   useEffect(() => {
     if (searchResult.length > 0) {
@@ -54,11 +62,12 @@ function SearchPage() {
 
   async function fetchSearch() {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/autocomplete?number=25&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
+      `https://api.spoonacular.com/recipes/autocomplete?number=10&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
     );
     const items = await data.json();
     setSearchResult(items);
   }
+  //submit search and fecth the data
 
   const noFunctionalityFunction = (id) => {
     console.log(`no functionality ${id}`);
@@ -91,6 +100,10 @@ function SearchPage() {
             style={{
               color: "#ffd31d",
               marginLeft: "10px",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              setSubmitSearch(!submitSearch);
             }}
           >
             <SearchIcon />

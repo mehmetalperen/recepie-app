@@ -4,6 +4,7 @@
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 40px auto;
   max-width: 320px;
   background-color: white;
@@ -38,5 +39,11 @@
 }
 
 .like-unlike-btn-container {
-  text-align: right;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.like-unlike-btn-container a:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
