@@ -26,23 +26,23 @@ red --> cd0a0a
   const [likedRecepies, setLikedRecepies] = useState([]);
 
   useEffect(() => {
+    async function getRecepieBacisIntro() {
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${match.params.id}/summary?apiKey=a32be79753f4445d842d92a452b17e81`
+      );
+      const dataJSON = await data.json();
+      if (dataJSON.title !== undefined) {
+        setRecepieName(dataJSON.title);
+      }
+      if (dataJSON.summary !== undefined) {
+        setRecepieDescription(dataJSON.summary);
+      }
+      setLikedRecepies(JSON.parse(localStorage.getItem("likedRecepies")));
+      setIsLiked(likedRecepies.includes(parseInt(match.params.id)));
+    }
     getRecepieBacisIntro();
   }, [match.params.id]);
 
-  async function getRecepieBacisIntro() {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/${match.params.id}/summary?apiKey=a32be79753f4445d842d92a452b17e81`
-    );
-    const dataJSON = await data.json();
-    if (dataJSON.title !== undefined) {
-      setRecepieName(dataJSON.title);
-    }
-    if (dataJSON.summary !== undefined) {
-      setRecepieDescription(dataJSON.summary);
-    }
-    setLikedRecepies(JSON.parse(localStorage.getItem("likedRecepies")));
-    setIsLiked(likedRecepies.includes(parseInt(match.params.id)));
-  }
   //LIKE /UNLIKE recepie
   useEffect(() => {
     setIsLiked(likedRecepies.includes(parseInt(match.params.id)));

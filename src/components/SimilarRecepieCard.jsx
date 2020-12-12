@@ -33,20 +33,16 @@ function SimilarRecepieCard(props) {
     });
   };
 
-  const noFunctionalityFunction = (id) => {
-    console.log(`hevle gube function: ${id}`);
-  };
   useEffect(() => {
+    async function getSimilarRecepies() {
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${props.id}/similar?apiKey=a32be79753f4445d842d92a452b17e81`
+      );
+      const JSONdata = await data.json();
+      setSimilarRecepieList(JSONdata);
+    }
     getSimilarRecepies();
   }, [props.id]);
-
-  async function getSimilarRecepies() {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/${props.id}/similar?apiKey=a32be79753f4445d842d92a452b17e81`
-    );
-    const JSONdata = await data.json();
-    setSimilarRecepieList(JSONdata);
-  }
 
   const handleRemoveRecepie = (id) => {
     setSimilarRecepieList((allRecepies) => {

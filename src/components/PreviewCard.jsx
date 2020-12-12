@@ -19,17 +19,18 @@ red --> cd0a0a
 
 function PreviewCard(props) {
   const [recepieSummary, setRecepieSummary] = useState("");
+
   useEffect(() => {
+    async function fetchRecepieSummary() {
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${props.id}/summary?apiKey=a32be79753f4445d842d92a452b17e81`
+      );
+      const itemSumJSON = await data.json();
+      setRecepieSummary(itemSumJSON.summary);
+    }
+
     fetchRecepieSummary();
   }, []);
-
-  async function fetchRecepieSummary() {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/${props.id}/summary?apiKey=a32be79753f4445d842d92a452b17e81`
-    );
-    const itemSumJSON = await data.json();
-    setRecepieSummary(itemSumJSON.summary);
-  }
 
   return (
     <div className="PreviewCard">

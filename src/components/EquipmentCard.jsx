@@ -6,17 +6,16 @@ function EquipmentCard(props) {
   const [equipmentList, setEquipmentList] = useState([]);
   const [isHide, setIsHide] = useState(true);
   useEffect(() => {
+    async function fetchEquipmentData() {
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${props.id}/equipmentWidget.json?apiKey=a32be79753f4445d842d92a452b17e81`
+      );
+      const equipmentJSON = await data.json();
+
+      setEquipmentList(equipmentJSON.equipment);
+    }
     fetchEquipmentData();
   }, [props.id]);
-
-  async function fetchEquipmentData() {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/${props.id}/equipmentWidget.json?apiKey=a32be79753f4445d842d92a452b17e81`
-    );
-    const equipmentJSON = await data.json();
-
-    setEquipmentList(equipmentJSON.equipment);
-  }
 
   return (
     <div className="EquipmentCard">
