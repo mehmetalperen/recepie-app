@@ -20,20 +20,25 @@ red --> cd0a0a
 
 */
   const [recepieName, setRecepieName] = useState("");
+  const [recepieDescription, setRecepieDescription] = useState("");
+  const [isShowSummary, setIsShowSummary] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [likedRecepies, setLikedRecepies] = useState([]);
 
   useEffect(() => {
-    getName();
+    getRecepieBacisIntro();
   }, [match.params.id]);
 
-  async function getName() {
+  async function getRecepieBacisIntro() {
     const data = await fetch(
       `https://api.spoonacular.com/recipes/${match.params.id}/summary?apiKey=a32be79753f4445d842d92a452b17e81`
     );
     const dataJSON = await data.json();
     if (dataJSON.title !== undefined) {
       setRecepieName(dataJSON.title);
+    }
+    if (dataJSON.summary !== undefined) {
+      setRecepieDescription(dataJSON.summary);
     }
     setLikedRecepies(JSON.parse(localStorage.getItem("likedRecepies")));
     setIsLiked(likedRecepies.includes(parseInt(match.params.id)));
@@ -65,37 +70,65 @@ red --> cd0a0a
     <div className="DetailPage">
       <div className="recepie-info-wrapper">
         <div className="img-title-container">
-          <img
-            src={`https://spoonacular.com/recipeImages/${match.params.id}-240x150.jpg`}
-            alt="dish-pic"
-          />
-          <h2 className="recepie-title">{recepieName}</h2>
-          <div className="youtube-like-btn-container">
-            <IconButton style={{ color: "#ec0101" }}>
-              <a
-                href={`https://www.youtube.com/results?search_query=how+to+make+${recepieName}`}
-                target="_blank"
+          {isShowSummary ? (
+            <div className="recepie-summary-container">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `<p>${recepieDescription}</p>`,
+                }}
+              />
+              <IconButton
+                style={{ color: "#ffd31d" }}
+                onClick={() => {
+                  setIsShowSummary(!isShowSummary);
+                }}
               >
-                <YouTubeIcon style={{ fontSize: "2rem" }} />
-              </a>
-            </IconButton>
-            <IconButton
-              style={{ color: "#ec0101" }}
-              onClick={() => {
-                if (isLiked) {
-                  handleUnlike();
-                } else {
-                  handleLike();
-                }
-              }}
-            >
-              {isLiked ? (
-                <FavoriteIcon style={{ fontSize: "2rem" }} />
-              ) : (
-                <FavoriteBorderIcon style={{ fontSize: "2rem" }} />
-              )}
-            </IconButton>
-          </div>
+                Summary
+              </IconButton>
+            </div>
+          ) : (
+            <div>
+              <img
+                src={`https://spoonacular.com/recipeImages/${match.params.id}-240x150.jpg`}
+                alt="dish-pic"
+              />
+              <h2 className="recepie-title">{recepieName}</h2>
+              <div className="youtube-like-btn-container">
+                <IconButton style={{ color: "#ec0101" }}>
+                  <a
+                    href={`https://www.youtube.com/results?search_query=how+to+make+${recepieName}`}
+                    target="_blank"
+                  >
+                    <YouTubeIcon style={{ fontSize: "2rem" }} />
+                  </a>
+                </IconButton>
+                <IconButton
+                  style={{ color: "#ffd31d" }}
+                  onClick={() => {
+                    setIsShowSummary(!isShowSummary);
+                  }}
+                >
+                  Summary
+                </IconButton>
+                <IconButton
+                  style={{ color: "#ec0101" }}
+                  onClick={() => {
+                    if (isLiked) {
+                      handleUnlike();
+                    } else {
+                      handleLike();
+                    }
+                  }}
+                >
+                  {isLiked ? (
+                    <FavoriteIcon style={{ fontSize: "2rem" }} />
+                  ) : (
+                    <FavoriteBorderIcon style={{ fontSize: "2rem" }} />
+                  )}
+                </IconButton>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="required-items-container">

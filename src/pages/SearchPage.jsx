@@ -12,10 +12,13 @@ function SearchPage() {
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowREsult] = useState(false);
   const [likedRecepies, setLikedRecepies] = useState([]);
+  const [randomRecepi, setRandomRecepi] = useState([{ id: "", name: "" }]);
+  const [isShowRandomRecepie, setIsShowRandomRecepie] = useState(false);
   // const [randomRecepie, setRandomRecepi] = useState([])
 
   //LOCAL STROGE --> like unlike recepie
   useEffect(() => {
+    randomRecepie();
     const likedRecepiesString = localStorage.getItem("likedRecepies");
     if (likedRecepiesString) {
       const likedRecepies = JSON.parse(likedRecepiesString);
@@ -69,6 +72,25 @@ function SearchPage() {
     setSearchResult(items);
   }
   //submit search and fecth the data
+
+  //Random Recepi
+  async function randomRecepie() {
+    const data = await fetch(
+      `https://api.spoonacular.com/recipes/random?apiKey=a32be79753f4445d842d92a452b17e81`
+    );
+    const dataJSON = await data.json();
+    if (
+      dataJSON.recipes[0].title !== undefined &&
+      dataJSON.recipes[0].id !== undefined
+    ) {
+      setRandomRecepi({
+        id: dataJSON.recipes[0].id,
+        name: dataJSON.recipes[0].title,
+      });
+      setIsShowRandomRecepie(true);
+    }
+  }
+  //Random Recepi
 
   const noFunctionalityFunction = (id) => {
     console.log(`no functionality ${id}`);
@@ -128,6 +150,21 @@ function SearchPage() {
               );
             })
           : null}
+      </div>
+      <div className="random-recepie-wrapper">
+        <h2 className="random-recepie-wrapper-title">Recipe of the Day</h2>
+        {isShowRandomRecepie ? (
+          <PreviewCard
+            key={randomRecepi.id}
+            id={randomRecepi.id}
+            name={randomRecepi.name}
+            isSearchPage={true}
+            onRemove={noFunctionalityFunction}
+            isLiked={likedRecepies.includes(randomRecepi.id)}
+            onLike={handleLikeRecepies}
+            onUnlike={handleUnlikeRecepies}
+          />
+        ) : null}
       </div>
     </div>
   );
