@@ -20,6 +20,7 @@ function SimilarRecepieCard(props) {
   useEffect(() => {
     localStorage.setItem("likedRecepies", JSON.stringify(likedRecepies));
   }, [likedRecepies]);
+
   const handleLikeRecepies = (id) => {
     setLikedRecepies((previousLikedRecepies) => {
       return [...previousLikedRecepies, id];

@@ -18,3 +18,9 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+@media only screen and (max-width: 800px) {
+  .InstructionCard {
+    max-width: 70%;
+  }
+}

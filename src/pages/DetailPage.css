@@ -56,3 +56,66 @@
 .similar-recepie-wrapper {
   grid-area: similarRecepie;
 }
+
+@media only screen and (max-width: 1090px) {
+  .DetailPage {
+    height: fit-content;
+    /* ^^^ fit-content*/
+    margin-top: 200px; /* give space from top for the navbar height: 150px; */
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 0.2fr;
+    grid-template-columns: 2fr;
+    grid-gap: 20px;
+    grid-template-areas:
+      "info"
+      "instructions"
+      "similarRecepie";
+    margin: 200px 0 0;
+  }
+
+  .recepie-info-wrapper {
+    grid-area: info;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .img-title-container {
+  }
+
+  .required-items-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: fit-content;
+    flex-wrap: wrap;
+  }
+
+  .instructions-wrapper {
+    grid-area: instructions;
+    border-style: solid;
+    border-width: 0px;
+    margin: 0 auto;
+  }
+
+  .similar-recepie-wrapper {
+    grid-area: similarRecepie;
+  }
+}
+
+@media only screen and (max-width: 542px) {
+  .required-items-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 545px) {
+  .instructions-wrapper {
+    grid-area: instructions;
+    max-width: 90%;
+  }
+  .similar-recepie-wrapper {
+    grid-area: similarRecepie;
+    box-sizing: border-box;
+    max-width: 90%;
+  }
+}

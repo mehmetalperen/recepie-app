@@ -34,3 +34,15 @@
   color: #f6cd61;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 770px) {
+  .Navbar h1 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .Navbar h1 {
+    font-size: 1.5rem;
+  }
+}
