@@ -80,8 +80,6 @@
     align-items: center;
     flex-wrap: wrap;
   }
-  .img-title-container {
-  }
 
   .required-items-container {
     display: flex;
