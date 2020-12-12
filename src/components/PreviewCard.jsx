@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./PreviewCard.css";
 import { Link } from "react-router-dom";
-
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import IconButton from "@material-ui/core/IconButton";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import YouTubeIcon from "@material-ui/icons/YouTube";
 /*
 Main Colors:
 yellow --> ffd31d
@@ -25,16 +29,30 @@ function PreviewCard(props) {
     );
     const itemSumJSON = await data.json();
     setRecepieSummary(itemSumJSON.summary);
-    //i don't like the format of summary. there are html elements displaying in the UI. need to fix it
   }
 
   return (
     <div className="PreviewCard">
+      {props.isSearchPage ? null : (
+        <div style={{ textAlign: "right" }}>
+          <IconButton
+            style={{ color: "#ec0101" }}
+            onClick={() => {
+              props.onRemove(props.id);
+            }}
+          >
+            <HighlightOffIcon />
+          </IconButton>
+        </div>
+      )}
+
       <div className="img-container">
-        <img
-          src={`https://spoonacular.com/recipeImages/${props.id}-312x231.jpg`}
-          alt="recepie-img"
-        />
+        <Link to={`/DetailPage/${props.id}`} style={{ textDecoration: "none" }}>
+          <img
+            src={`https://spoonacular.com/recipeImages/${props.id}-312x231.jpg`}
+            alt="recepie-img"
+          />
+        </Link>
       </div>
 
       <div className="recepie-detail-container">
@@ -48,11 +66,37 @@ function PreviewCard(props) {
           to={`/DetailPage/${props.id}`}
           style={{ textDecoration: "none", color: "#ec0101" }}
         >
-          <p className="recepie-description">{recepieSummary}</p>
+          {recepieSummary === "" ? null : (
+            <div
+              dangerouslySetInnerHTML={{ __html: `<p>${recepieSummary}</p>` }}
+            />
+          )}
         </Link>
       </div>
       <div className="like-unlike-btn-container">
-        <button>like</button>
+        {props.name === "Click Here for More Detail" ? (
+          <div></div>
+        ) : (
+          <a
+            href={`https://www.youtube.com/results?search_query=how+to+make+${props.name}`}
+            target="_blank"
+          >
+            <YouTubeIcon />
+          </a>
+        )}
+
+        <IconButton
+          style={{ color: "#ec0101" }}
+          onClick={() => {
+            if (!props.isLiked) {
+              props.onLike(props.id);
+            } else {
+              props.onUnlike(props.id);
+            }
+          }}
+        >
+          {props.isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </IconButton>
       </div>
     </div>
   );

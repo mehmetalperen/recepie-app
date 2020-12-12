@@ -8,16 +8,52 @@ import "./SearchPage.css";
 
 function SearchPage() {
   const [typedValue, setTypedValue] = useState("");
+  const [submitSearch, setSubmitSearch] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowREsult] = useState(false);
+  const [likedRecepies, setLikedRecepies] = useState([]);
+  // const [randomRecepie, setRandomRecepi] = useState([])
 
+  //LOCAL STROGE --> like unlike recepie
+  useEffect(() => {
+    const likedRecepiesString = localStorage.getItem("likedRecepies");
+    if (likedRecepiesString) {
+      const likedRecepies = JSON.parse(likedRecepiesString);
+      setLikedRecepies(likedRecepies);
+    } else {
+      localStorage.setItem("likedRecepies", "[]");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("likedRecepies", JSON.stringify(likedRecepies));
+  }, [likedRecepies]);
+
+  const handleLikeRecepies = (id) => {
+    setLikedRecepies((previousLikedRecepies) => {
+      return [...previousLikedRecepies, id];
+    });
+  };
+
+  const handleUnlikeRecepies = (id) => {
+    setLikedRecepies((previousLikedRecepies) => {
+      return previousLikedRecepies.filter((recepieID) => recepieID !== id);
+    });
+  };
+  //LOCAL STROGE --> like unlike recepie
+
+  //user typing
   const handleTyping = (event) => {
     setTypedValue(event.target.value);
   };
+  //user typing
 
+  //submit search and fecth the data
   useEffect(() => {
-    fetchSearch();
-  }, [typedValue]);
+    if (submitSearch) {
+      fetchSearch();
+    }
+  }, [submitSearch]);
 
   useEffect(() => {
     if (searchResult.length > 0) {
@@ -27,11 +63,16 @@ function SearchPage() {
 
   async function fetchSearch() {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/autocomplete?number=1&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
+      `https://api.spoonacular.com/recipes/autocomplete?number=3&query=${typedValue}&apiKey=a32be79753f4445d842d92a452b17e81`
     );
     const items = await data.json();
     setSearchResult(items);
   }
+  //submit search and fecth the data
+
+  const noFunctionalityFunction = (id) => {
+    console.log(`no functionality ${id}`);
+  };
   return (
     <div className="SearchPage">
       <div className="search-box-container">
@@ -61,6 +102,10 @@ function SearchPage() {
               color: "#ffd31d",
               marginLeft: "10px",
             }}
+            onClick={(e) => {
+              e.preventDefault();
+              setSubmitSearch(!submitSearch);
+            }}
           >
             <SearchIcon />
           </IconButton>
@@ -70,7 +115,16 @@ function SearchPage() {
         {showResult
           ? searchResult.map((dish) => {
               return (
-                <PreviewCard key={dish.id} id={dish.id} name={dish.title} />
+                <PreviewCard
+                  key={dish.id}
+                  id={dish.id}
+                  name={dish.title}
+                  isSearchPage={true}
+                  onRemove={noFunctionalityFunction}
+                  isLiked={likedRecepies.includes(dish.id)}
+                  onLike={handleLikeRecepies}
+                  onUnlike={handleUnlikeRecepies}
+                />
               );
             })
           : null}

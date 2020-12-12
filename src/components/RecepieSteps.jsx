@@ -1,19 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./RecepieSteps.css";
-//import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
-function RecepieSteps() {
-  //props --> steps, and stepNumber
+function RecepieSteps(props) {
+  const [isDone, setIsDone] = useState(false);
+  const [paragraphStyle, setParagraphStyle] = useState({
+    textDecoration: "none",
+  });
+
+  useEffect(() => {
+    isDone
+      ? setParagraphStyle({
+          textDecoration: "line-through",
+        })
+      : setParagraphStyle({
+          textDecoration: "none",
+        });
+  }, [isDone]);
   return (
     <div className="RecepieSteps">
-      <h3 className="step-number">{`${44})`}</h3>
-      <p className="instruction">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum cum
-        quae nihil earum maiores! Beatae impedit voluptas, obcaecati aspernatur
-        minima, magnam odio, ratione fugiat pariatur aliquid est. Suscipit,
-        ratione eos.
+      <h3 className="step-number">{`${props.stepNumber})`}</h3>
+      <p className="instruction" style={paragraphStyle}>
+        {props.stepOrder}
       </p>
-      <button>X</button>
+      <IconButton
+        style={{ color: "#cd0a0a" }}
+        onClick={() => {
+          setIsDone(!isDone);
+        }}
+      >
+        {isDone ? (
+          <CheckCircleOutlineIcon style={{ color: "green" }} />
+        ) : (
+          <RadioButtonUncheckedIcon style={{ color: "#cd0a0a" }} />
+        )}
+      </IconButton>
     </div>
   );
 }

@@ -1,20 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./InstructionCard.css";
 import RecepieSteps from "./RecepieSteps";
 //import IconButton from "@material-ui/core/IconButton";
 
-function InstructionCard() {
+function InstructionCard(props) {
+  const [recepieStepsList, setRecepieStepsList] = useState([]);
+  useEffect(() => {
+    fetchSummaryData();
+  }, [props.id]);
+
+  async function fetchSummaryData() {
+    const data = await fetch(
+      `https://api.spoonacular.com/recipes/${props.id}/analyzedInstructions?apiKey=a32be79753f4445d842d92a452b17e81`
+    );
+    const stepsJSON = await data.json();
+    if (stepsJSON.length > 0) {
+      setRecepieStepsList(stepsJSON[0].steps);
+    }
+  }
+
   return (
     <div className="InstructionCard">
-      <h1 className="total-steps">Total steps: ##</h1>
-      <RecepieSteps />
-      <RecepieSteps />
-      <RecepieSteps />
-      <RecepieSteps />
-      <RecepieSteps />
-      <RecepieSteps />
-      <RecepieSteps />
-      <RecepieSteps />
+      {recepieStepsList.length > 0 ? (
+        <h1 className="total-steps">Total steps: {recepieStepsList.length}</h1>
+      ) : (
+        <h1>NO INSTRUCTIONS FOR THIS RECEPIE</h1>
+      )}
+
+      {recepieStepsList.length > 0
+        ? recepieStepsList.map((stepInfo, index) => {
+            return (
+              <RecepieSteps
+                key={index}
+                stepOrder={stepInfo.step}
+                stepNumber={stepInfo.number}
+              />
+            );
+          })
+        : null}
     </div>
   );
 }

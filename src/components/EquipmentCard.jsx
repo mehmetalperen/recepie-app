@@ -1,21 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./EquipmentCard.css";
 import EquipmentItem from "./EquipmentItem";
-//import IconButton from "@material-ui/core/IconButton";
 
-function EquipmentCard() {
+function EquipmentCard(props) {
+  const [equipmentList, setEquipmentList] = useState([]);
+  const [isHide, setIsHide] = useState(true);
+  useEffect(() => {
+    fetchEquipmentData();
+  }, [props.id]);
+
+  async function fetchEquipmentData() {
+    const data = await fetch(
+      `https://api.spoonacular.com/recipes/${props.id}/equipmentWidget.json?apiKey=a32be79753f4445d842d92a452b17e81`
+    );
+    const equipmentJSON = await data.json();
+
+    setEquipmentList(equipmentJSON.equipment);
+  }
+
   return (
     <div className="EquipmentCard">
       <div className="hide-btn-container">
-        <button>hide</button>
+        <h4
+          style={{ color: "#cd0a0a" }}
+          onClick={() => {
+            setIsHide(!isHide);
+          }}
+        >
+          {isHide ? "Equipments" : "Hide"}
+        </h4>
       </div>
 
-      {/*make it scrollable if there is more than five ingredienst*/}
-      <EquipmentItem />
-      <EquipmentItem />
-      <EquipmentItem />
-      <EquipmentItem />
-      <EquipmentItem />
+      {!isHide
+        ? equipmentList.map((equipment, index) => {
+            return (
+              <EquipmentItem
+                key={index}
+                id={index}
+                name={equipment.name}
+                imgURL={equipment.image}
+              />
+            );
+          })
+        : null}
     </div>
   );
 }
