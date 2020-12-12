@@ -11,6 +11,10 @@
   text-align: right;
   height: fit-content;
   box-sizing: border-box;
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
 }
 
 .EquipmentCard:hover {
