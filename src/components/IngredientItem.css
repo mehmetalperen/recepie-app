@@ -35,3 +35,10 @@ button {
   width: fit-content;
   height: fit-content;
 }
+
+@media only screen and (max-width: 400px) {
+  .IngredientItem {
+    margin: 0;
+    flex-wrap: wrap;
+  }
+}

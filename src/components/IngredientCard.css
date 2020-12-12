@@ -26,3 +26,12 @@
     margin: 10px;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .IngredientCard {
+    margin: 0;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+}

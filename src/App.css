@@ -6,7 +6,9 @@
   left: 0;
   height: fit-content;
   background-color: #f6f4e6;
-  width: fit-content;
+  border-style: dotted;
+  box-sizing: border-box;
+  border-width: 0;
 }
 
 b {

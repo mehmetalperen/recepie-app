@@ -27,3 +27,10 @@
     width: 90%;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .EquipmentCard {
+    margin: 0;
+    width: max-content;
+  }
+}

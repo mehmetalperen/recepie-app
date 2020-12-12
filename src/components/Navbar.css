@@ -17,6 +17,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: rgb(55, 55, 56);
+  box-sizing: border-box;
 }
 
 .homeBtn-box,
