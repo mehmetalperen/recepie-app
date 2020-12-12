@@ -4,20 +4,15 @@ import IconButton from "@material-ui/core/IconButton";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 function IngredientItem(props) {
-  const [metricAmount, setMetricAmount] = useState({ value: "", unit: "" });
-  const [USamount, setUSamount] = useState({ value: "", unit: "" });
+  const [metricAmount] = useState({
+    unit: props.metricAmount.unit,
+    value: props.metricAmount.value.toFixed(1),
+  });
+  const [USamount] = useState({
+    unit: props.USamount.unit,
+    value: props.USamount.value.toFixed(1),
+  });
   const [isMetric, setIsMetric] = useState(true);
-
-  useEffect(() => {
-    setMetricAmount({
-      unit: props.metricAmount.unit,
-      value: props.metricAmount.value.toFixed(1),
-    });
-    setUSamount({
-      unit: props.USamount.unit,
-      value: props.USamount.value.toFixed(1),
-    });
-  }, []);
 
   const [isClosed, setIsClosed] = useState(false);
   const [blur, setBlur] = useState("blur(0px)");

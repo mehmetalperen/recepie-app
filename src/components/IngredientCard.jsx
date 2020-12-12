@@ -8,6 +8,13 @@ function IngredientCard(props) {
   const [isShowList, setIsShowList] = useState(false);
 
   useEffect(() => {
+    async function getIngredientListData() {
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/${props.id}/ingredientWidget.json?apiKey=a32be79753f4445d842d92a452b17e81`
+      );
+      const ingredientsJSON = await data.json();
+      setIngredientList(ingredientsJSON.ingredients);
+    }
     getIngredientListData();
   }, [props.id]);
 
@@ -18,14 +25,6 @@ function IngredientCard(props) {
       setIsShowList(false);
     }
   }, [ingredientList]);
-
-  async function getIngredientListData() {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/${props.id}/ingredientWidget.json?apiKey=a32be79753f4445d842d92a452b17e81`
-    );
-    const ingredientsJSON = await data.json();
-    setIngredientList(ingredientsJSON.ingredients);
-  }
 
   return (
     <div className="IngredientCard">

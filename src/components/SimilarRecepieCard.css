@@ -13,6 +13,9 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+.SimilarRecepieCard h2 {
+  color: #cd0a0a;
+}
 
 @media only screen and (max-width: 1090px) {
   .SimilarRecepieCard {

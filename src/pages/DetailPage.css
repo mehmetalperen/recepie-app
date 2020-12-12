@@ -47,6 +47,8 @@
   max-height: 400px;
   overflow-x: hidden;
   overflow-y: auto;
+  justify-content: center;
+  text-align: center;
 }
 
 .recepie-summary-container {

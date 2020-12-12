@@ -19,6 +19,9 @@
 .IngredientCard:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+.IngredientCard h3 {
+  color: #ec0101;
+}
 
 @media only screen and (max-width: 545px) {
   .IngredientCard {

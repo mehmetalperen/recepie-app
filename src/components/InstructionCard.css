@@ -19,6 +19,9 @@
   overflow-y: auto;
 }
 
+.InstructionCard h1 {
+  color: #ec0101;
+}
 @media only screen and (max-width: 800px) {
   .InstructionCard {
     max-width: 70%;
