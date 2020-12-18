@@ -69,6 +69,7 @@ function PreviewCard(props) {
         >
           {recepieSummary === "" ? null : (
             <div
+              className="summary-text-div"
               dangerouslySetInnerHTML={{ __html: `<p>${recepieSummary}</p>` }}
             />
           )}

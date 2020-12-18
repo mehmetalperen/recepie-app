@@ -17,6 +17,23 @@
   border-color: #f6cd61;
   padding: 20px 10px;
   height: fit-content;
+  opacity: none;
+  animation-name: example;
+  animation-duration: 4s;
+}
+.summary-text-div {
+  opacity: none;
+  animation-name: example;
+  animation-duration: 3s;
+}
+@keyframes example {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 2;
+  }
 }
 
 .PreviewCard:hover {
