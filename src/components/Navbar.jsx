@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 
@@ -38,7 +38,7 @@ function Navbar() {
       <div className="heartBtn-box">
         <Link to="/FavoritePage" style={{ textDecoration: "none" }}>
           <IconButton aria-label="delete">
-            <ThumbUpIcon fontSize="large" style={{ color: "#a23131" }} />
+            <FavoriteIcon fontSize="large" style={{ color: "red" }} />
           </IconButton>
         </Link>
       </div>
