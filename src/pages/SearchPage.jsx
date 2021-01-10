@@ -106,14 +106,14 @@ function SearchPage() {
             boxShadow:
               "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
             borderStyle: "solid",
-            borderWidth: "2px",
+            borderWidth: "0.5px",
             borderColor: "#f6cd61",
             padding: "10px 20px",
           }}
         >
           <InputBase
             placeholder="Delicious Recepies..."
-            style={{ color: "#ec0101", width: "fit-content" }}
+            style={{ color: "#a23131", width: "fit-content" }}
             value={typedValue}
             onChange={handleTyping}
           />

@@ -32,7 +32,7 @@ function IngredientItem(props) {
         ) : null}
         <h4 className="item-name">{props.name}</h4>
         <IconButton
-          style={{ color: "#f6cd61" }}
+          style={{ color: "#ffa45b", textDecoration: "underline" }}
           onClick={() => {
             USamount.unit === metricAmount.unit
               ? alert(`Can't change the unit for this item`)
