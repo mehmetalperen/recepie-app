@@ -9,13 +9,13 @@ import './App.css';
 
 /*
 Main Colors:
-yellow --> ffd31d
-red --> ec0101
+yellow --> ffa45b
+red --> a23131
 
 
 secondary colors:
 yellow --> f6cd61
-red --> cd0a0a
+red --> d34848
 
 
 font-family: 'Anton', sans-serif;

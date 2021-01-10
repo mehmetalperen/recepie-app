@@ -78,7 +78,7 @@ red --> cd0a0a
                 }}
               />
               <IconButton
-                style={{ color: "#ffd31d" }}
+                style={{ color: "#ffa45b" }}
                 onClick={() => {
                   setIsShowSummary(!isShowSummary);
                 }}
@@ -92,7 +92,9 @@ red --> cd0a0a
                 src={`https://spoonacular.com/recipeImages/${match.params.id}-240x150.jpg`}
                 alt="dish-pic"
               />
-              <h2 className="recepie-title">{recepieName}</h2>
+              <h2 className="recepie-title" style={{ color: "#a23131" }}>
+                {recepieName}
+              </h2>
               <div className="youtube-like-btn-container">
                 <IconButton style={{ color: "#ec0101" }}>
                   <a
@@ -103,7 +105,7 @@ red --> cd0a0a
                   </a>
                 </IconButton>
                 <IconButton
-                  style={{ color: "#ffd31d" }}
+                  style={{ color: "#ffa45b" }}
                   onClick={() => {
                     setIsShowSummary(!isShowSummary);
                   }}
