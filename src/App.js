@@ -12,9 +12,15 @@ Main Colors:
 yellow --> ffd31d
 red --> ec0101
 
+
 secondary colors:
 yellow --> f6cd61
 red --> cd0a0a
+
+
+font-family: 'Anton', sans-serif;
+font-family: 'Cabin', sans-serif;
+font-family: 'Libre Franklin', sans-serif;
 
 */
 function App() {

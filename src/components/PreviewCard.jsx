@@ -59,7 +59,7 @@ function PreviewCard(props) {
       <div className="recepie-detail-container">
         <Link
           to={`/DetailPage/${props.id}`}
-          style={{ textDecoration: "none", color: "#ec0101" }}
+          style={{ textDecoration: "none", color: "#a23131" }}
         >
           <h4 className="recepie-name">{props.name}</h4>
         </Link>

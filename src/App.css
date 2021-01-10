@@ -9,13 +9,27 @@
   border-style: dotted;
   box-sizing: border-box;
   border-width: 0;
+  font-family: "Libre Franklin", sans-serif;
+}
+h1 {
+  font-family: "Anton", sans-serif;
+  color: #a23131;
 }
 
+p {
+  color: #d34848;
+}
+h2 {
+  font-family: "Cabin", sans-serif;
+  color: #a23131;
+}
 b {
   color: black;
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 a {
   text-decoration: none;
-  color: red;
+  color: #d34848;
 }
