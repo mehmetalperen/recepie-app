@@ -88,7 +88,7 @@ function PreviewCard(props) {
         )}
 
         <IconButton
-          style={{ color: "#ec0101" }}
+          style={{ color: "#a23131" }}
           onClick={() => {
             if (!props.isLiked) {
               props.onLike(props.id);

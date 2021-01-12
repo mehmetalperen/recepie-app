@@ -87,7 +87,7 @@ red --> cd0a0a
               </IconButton>
             </div>
           ) : (
-            <div>
+            <div className="img-like-container">
               <img
                 src={`https://spoonacular.com/recipeImages/${match.params.id}-240x150.jpg`}
                 alt="dish-pic"

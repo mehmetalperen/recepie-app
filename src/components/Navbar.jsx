@@ -38,7 +38,7 @@ function Navbar() {
       <div className="heartBtn-box">
         <Link to="/FavoritePage" style={{ textDecoration: "none" }}>
           <IconButton aria-label="delete">
-            <FavoriteIcon fontSize="large" style={{ color: "red" }} />
+            <FavoriteIcon fontSize="large" style={{ color: "#a23131" }} />
           </IconButton>
         </Link>
       </div>

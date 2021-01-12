@@ -54,6 +54,61 @@
 .recepie-summary-container {
   text-align: center;
   margin-bottom: 10px;
+  overflow: hidden;
+  animation: show-summary-container 0.8s ease-in forwards;
+}
+@keyframes show-summary-container {
+  0% {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  25% {
+    height: 100px;
+    opacity: 0.2;
+  }
+  50% {
+    height: 200px;
+    opacity: 0.5;
+  }
+  75% {
+    height: 300px;
+    opacity: 0.7;
+  }
+  100% {
+    height: fit-content;
+    opacity: 1;
+
+    visibility: visible;
+  }
+}
+.img-like-container {
+  animation: show-img-like-container 0.8s ease-in forwards;
+}
+@keyframes show-img-like-container {
+  0% {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  25% {
+    height: 100px;
+    opacity: 0.2;
+  }
+  50% {
+    height: 200px;
+    opacity: 0.5;
+  }
+  75% {
+    height: 300px;
+    opacity: 0.7;
+  }
+  100% {
+    height: fit-content;
+    opacity: 1;
+
+    visibility: visible;
+  }
 }
 .img-title-container h2 {
   word-wrap: break-word;
