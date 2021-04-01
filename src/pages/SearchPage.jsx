@@ -14,10 +14,9 @@ function SearchPage() {
   const [likedRecepies, setLikedRecepies] = useState([]);
   const [randomRecepi, setRandomRecepi] = useState([{ id: "", name: "" }]);
   const [isShowRandomRecepie, setIsShowRandomRecepie] = useState(false);
-  // const [randomRecepie, setRandomRecepi] = useState([])
 
-  //LOCAL STROGE --> like unlike recepie
   useEffect(() => {
+    //on page load
     randomRecepie();
     const likedRecepiesString = localStorage.getItem("likedRecepies");
     if (likedRecepiesString) {

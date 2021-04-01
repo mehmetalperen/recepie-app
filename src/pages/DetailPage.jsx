@@ -83,7 +83,7 @@ red --> cd0a0a
                   setIsShowSummary(!isShowSummary);
                 }}
               >
-                Summary
+                Show Picture
               </IconButton>
             </div>
           ) : (

@@ -21,6 +21,7 @@ function PreviewCard(props) {
   const [recepieSummary, setRecepieSummary] = useState("");
 
   useEffect(() => {
+    //on page load
     async function fetchRecepieSummary() {
       const data = await fetch(
         `https://api.spoonacular.com/recipes/${props.id}/summary?apiKey=a32be79753f4445d842d92a452b17e81`

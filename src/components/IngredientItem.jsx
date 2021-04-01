@@ -3,6 +3,7 @@ import "./IngredientItem.css";
 import IconButton from "@material-ui/core/IconButton";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+
 function IngredientItem(props) {
   const [metricAmount] = useState({
     unit: props.metricAmount.unit,
