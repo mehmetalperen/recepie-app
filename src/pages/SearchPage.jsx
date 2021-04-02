@@ -104,15 +104,12 @@ function SearchPage() {
             borderRadius: "30px",
             boxShadow:
               "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-            borderStyle: "solid",
-            borderWidth: "0.5px",
-            borderColor: "#f6cd61",
             padding: "10px 20px",
           }}
         >
           <InputBase
             placeholder="Delicious Recepies..."
-            style={{ color: "#a23131", width: "fit-content" }}
+            style={{ color: "#464f41", width: "fit-content" }}
             value={typedValue}
             onChange={handleTyping}
           />
@@ -120,7 +117,7 @@ function SearchPage() {
             type="submit"
             aria-label="search"
             style={{
-              color: "#ffd31d",
+              color: "#464f41",
               marginLeft: "10px",
             }}
             onClick={(e) => {

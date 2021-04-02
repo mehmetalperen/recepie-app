@@ -1,6 +1,6 @@
 .Navbar {
   position: sticky;
-  background-color: rgba(235, 211, 166, 0.5);
+  background-color: #bfcba8;
   top: 0;
   right: 0;
   left: 0;
@@ -10,11 +10,11 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  border-radius: 0 0 50px 50px;
   border-style: solid;
   border-width: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
   box-sizing: border-box;
+  z-index: 10000;
 }
 
 .homeBtn-box,
@@ -23,14 +23,14 @@
 }
 
 .Navbar h1 {
-  color: #a23131;
+  color: white;
+  text-shadow: -1px 0 #464f41, 0 2px #464f41, 2px 0 #464f41, 0 -1px #464f41;
   padding-left: 20px;
   font-size: 2.9rem;
   font-family: "Anton", sans-serif;
 }
 
 .Navbar h1:hover {
-  color: #d34848;
   cursor: pointer;
 }
 

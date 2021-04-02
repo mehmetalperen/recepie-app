@@ -33,10 +33,10 @@ function IngredientItem(props) {
         ) : null}
         <h4 className="item-name">{props.name}</h4>
         <IconButton
-          style={{ color: "#ffa45b", textDecoration: "underline" }}
+          style={{ color: "#5b8a72", textDecoration: "underline" }}
           onClick={() => {
             USamount.unit === metricAmount.unit
-              ? alert(`Can't change the unit for this item`)
+              ? alert(`Only one unit is avaible for this item`)
               : setIsMetric(!isMetric);
           }}
         >
@@ -51,9 +51,9 @@ function IngredientItem(props) {
         }}
       >
         {isClosed ? (
-          <CheckCircleOutlineIcon style={{ color: "green" }} />
+          <CheckCircleOutlineIcon style={{ color: "#5b8a72" }} />
         ) : (
-          <RadioButtonUncheckedIcon style={{ color: "#cd0a0a" }} />
+          <RadioButtonUncheckedIcon style={{ color: "#5b8a72" }} />
         )}
       </IconButton>
     </div>

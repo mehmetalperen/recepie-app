@@ -74,11 +74,11 @@ red --> cd0a0a
             <div className="recepie-summary-container">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: `<p>${recepieDescription}</p>`,
+                  __html: `<p style="color: #5b8a72"}>${recepieDescription}</p>`,
                 }}
               />
               <IconButton
-                style={{ color: "#ffa45b" }}
+                style={{ color: "#56776c" }}
                 onClick={() => {
                   setIsShowSummary(!isShowSummary);
                 }}
@@ -92,20 +92,22 @@ red --> cd0a0a
                 src={`https://spoonacular.com/recipeImages/${match.params.id}-240x150.jpg`}
                 alt="dish-pic"
               />
-              <h2 className="recepie-title" style={{ color: "#a23131" }}>
+              <h2 className="recepie-title" style={{ color: "#464f41" }}>
                 {recepieName}
               </h2>
               <div className="youtube-like-btn-container">
-                <IconButton style={{ color: "#ec0101" }}>
+                <IconButton style={{ color: "#5b8a72" }}>
                   <a
                     href={`https://www.youtube.com/results?search_query=how+to+make+${recepieName}`}
                     target="_blank"
                   >
-                    <YouTubeIcon style={{ fontSize: "2rem" }} />
+                    <YouTubeIcon
+                      style={{ fontSize: "2rem", color: "#5b8a72" }}
+                    />
                   </a>
                 </IconButton>
                 <IconButton
-                  style={{ color: "#ffa45b" }}
+                  style={{ color: "#56776c" }}
                   onClick={() => {
                     setIsShowSummary(!isShowSummary);
                   }}
@@ -113,7 +115,7 @@ red --> cd0a0a
                   Summary
                 </IconButton>
                 <IconButton
-                  style={{ color: "#ec0101" }}
+                  style={{ color: "#5b8a72" }}
                   onClick={() => {
                     if (isLiked) {
                       handleUnlike();
@@ -135,7 +137,6 @@ red --> cd0a0a
 
         <div className="required-items-container">
           <IngredientCard id={match.params.id} />
-          <EquipmentCard id={match.params.id} />
         </div>
       </div>
 

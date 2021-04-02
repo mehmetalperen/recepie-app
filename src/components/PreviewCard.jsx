@@ -7,13 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 /*
-Main Colors:
-yellow --> ffd31d
-red --> ec0101
-
-secondary colors:
-yellow --> f6cd61
-red --> cd0a0a
 
 */
 
@@ -38,7 +31,7 @@ function PreviewCard(props) {
       {props.isSearchPage ? null : (
         <div style={{ textAlign: "right" }}>
           <IconButton
-            style={{ color: "#ec0101" }}
+            style={{ color: "#5b8a72" }}
             onClick={() => {
               props.onRemove(props.id);
             }}
@@ -60,18 +53,20 @@ function PreviewCard(props) {
       <div className="recepie-detail-container">
         <Link
           to={`/DetailPage/${props.id}`}
-          style={{ textDecoration: "none", color: "#a23131" }}
+          style={{ textDecoration: "none", color: "#464f41" }}
         >
           <h4 className="recepie-name">{props.name}</h4>
         </Link>
         <Link
           to={`/DetailPage/${props.id}`}
-          style={{ textDecoration: "none", color: "#ec0101" }}
+          style={{ textDecoration: "none", color: "#5b8a72" }}
         >
           {recepieSummary === "" ? null : (
             <div
               className="summary-text-div"
-              dangerouslySetInnerHTML={{ __html: `<p>${recepieSummary}</p>` }}
+              dangerouslySetInnerHTML={{
+                __html: `<p style="color: #5b8a72">${recepieSummary}</p>`,
+              }}
             />
           )}
         </Link>
@@ -84,12 +79,12 @@ function PreviewCard(props) {
             href={`https://www.youtube.com/results?search_query=how+to+make+${props.name}`}
             target="_blank"
           >
-            <YouTubeIcon />
+            <YouTubeIcon style={{ color: "#5b8a72" }} />
           </a>
         )}
 
         <IconButton
-          style={{ color: "#a23131" }}
+          style={{ color: "#5b8a72" }}
           onClick={() => {
             if (!props.isLiked) {
               props.onLike(props.id);

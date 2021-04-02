@@ -26,9 +26,10 @@ function Navbar() {
               fontSize="large"
               style={{
                 color: "white",
-                backgroundColor: "#a23131",
+                backgroundColor: "#464f41",
                 borderRadius: "50%",
                 padding: "5px",
+                margin: "0 5px 0 0",
               }}
             />
             Hungry!¡!¡
@@ -38,7 +39,7 @@ function Navbar() {
       <div className="heartBtn-box">
         <Link to="/FavoritePage" style={{ textDecoration: "none" }}>
           <IconButton aria-label="delete">
-            <FavoriteIcon fontSize="large" style={{ color: "#a23131" }} />
+            <FavoriteIcon fontSize="large" style={{ color: "#464f41" }} />
           </IconButton>
         </Link>
       </div>

@@ -21,9 +21,11 @@ function InstructionCard(props) {
   return (
     <div className="InstructionCard">
       {recepieStepsList.length > 0 ? (
-        <h1 className="total-steps">Total steps: {recepieStepsList.length}</h1>
+        <h1 style={{ color: "#464f41" }} className="total-steps">
+          Total steps: {recepieStepsList.length}
+        </h1>
       ) : (
-        <h1>NO INSTRUCTIONS FOR THIS RECEPIE</h1>
+        <h1 style={{ color: "#464f41" }}>NO INSTRUCTIONS FOR THIS RECEPIE</h1>
       )}
 
       {recepieStepsList.length > 0
