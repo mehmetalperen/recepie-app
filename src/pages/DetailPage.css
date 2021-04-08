@@ -105,8 +105,11 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    height: fit-content;
   }
-
+  .img-title-container {
+    margin: 0 auto;
+  }
   .required-items-container {
     display: flex;
     justify-content: space-evenly;
